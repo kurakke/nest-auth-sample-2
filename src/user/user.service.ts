@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class UserService {
   constructor(private prismaService: PrismaService) {}
 
-  findOne(name: string): Promise<User> {
+  findOne(name: User['name']): Promise<User> {
     return this.prismaService.user.findUnique({
       where: { name },
     });
