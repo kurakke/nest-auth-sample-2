@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { UserService } from 'src/user/user.service';
 import { JwtService } from '@nestjs/jwt';
@@ -16,7 +16,7 @@ export class AuthService {
     if (user && isMatch) {
       return user;
     }
-    return null;
+    throw new ForbiddenException('Invalid username or password');
   }
 
   async login(user: User) {
