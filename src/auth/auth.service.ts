@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   async signup(user: SignupDto) {
-    const salt = this.configService.get<number>('SALT');
+    const salt: number = Number(this.configService.get<number>('SALT'));
     const hashedPassword = await bcrypt.hash(user.password, salt);
     const createUser: CreateUserDto = {
       name: user.name,
