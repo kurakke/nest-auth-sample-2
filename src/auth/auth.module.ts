@@ -13,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
     UserModule,
     PassportModule,
     JwtModule.register({
+      global: true,
       secret: 'secret',
       signOptions: { expiresIn: '7d' },
     }),
